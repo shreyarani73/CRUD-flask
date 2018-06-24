@@ -1,0 +1,65 @@
+<html>
+  <body>
+    <form method="POST" action="/">
+      <input type="number" name="ISBN" placeholder="ISBN">
+      <input type="text" name="BookName" placeholder="BookName">
+      <input type="text" name="Author" placeholder="Author">
+      <input type="submit" value="Add">
+    </form>
+
+    <h1>Books</h1>
+    <table>
+    {% for book in books %}
+    <tr>
+    	<td>{{book.ISBN}} </td>
+    	<td>
+    		<form method="POST" action="./update">
+    			 <input type="hidden" value="{{book.ISBN}}" name="oldISBN">
+                 <input type="number" value="{{book.ISBN}}" name="newISBN">
+                 <input type="submit" value="Update">
+           </form>
+        </td>
+        <td>
+        	<form method="POST" action="./delete">
+        		<input type="hidden" value="{{book.ISBN}}" name="ISBN">
+                <input type="submit" value="Delete">
+        	</form>
+        </td>
+    </tr>
+    <tr>
+    	<td> {{book.BookName}} </td>
+    	<td>
+    		<form method="POST" action="./update">
+    			<input type="hidden" value="{{book.BookName}}" name="oldBookName">
+                <input type="text" value="{{book.BookName}}" name="newBookName">
+                <input type="submit" value="Update">
+    		</form>
+    	</td>
+    	<td>
+    		<form method="POST" action="./delete">
+    			<input type="hidden" value="{{book.BookName}}" name="BookName">
+  <input type="submit" value="Delete">
+    		</form>
+    	</td>
+    </tr>
+    <tr>
+    	<td>{{book.Author}}</td>
+    	<td>
+    		<form method="POST" action="./update">
+    			<input type="hidden" value="{{book.Author}}" name="oldAuthor">
+                <input type="text" value="{{book.Author}}" name="newAuthor">
+                <input type="submit" value="Update">
+
+    		</form>
+    	</td>
+    	<td>
+    		<form method="POST" action="./delete">
+    			<input type="hidden" value="{{book.Author}}" name="Author">
+                <input type="submit" value="Delete">
+    		</form>
+    	</td>
+    </tr>
+    {% endfor %}
+    </table>
+  </body>
+</html> 
